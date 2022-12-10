@@ -4,26 +4,31 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int capacity = 100_000;
-        ArrayList<Integer> list = new ArrayList<>(capacity);
-        LinkedList<Integer> list2 = new LinkedList<>(list);
+        int capacity = 1_000_000;
+        ArrayList<Integer> arrayList = new ArrayList<>(capacity);
+        LinkedList<Integer> linkedList = new LinkedList<>(arrayList);
         Random random = new Random();
+
+        fillList(arrayList, capacity);
+        fillList(linkedList, capacity);
 
         System.out.print("Время затраченое на добавление элемента в начало коллекции ArrayList: ");
         Date beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list.add(0, random.nextInt(100));
-        }
+
+        arrayList.add(0, random.nextInt(100));
+
         Date afterCycle = new Date();
+
         long elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
         System.out.print("Время затраченое на добавление элемента в начало коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.addFirst(random.nextInt(100));
-        }
+
+        linkedList.addFirst(random.nextInt(100));
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
@@ -31,19 +36,21 @@ public class Main {
 
         System.out.print("Время затраченое на добавление элемента в конец коллекции ArrayList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list.add(random.nextInt(100));
-        }
+
+        arrayList.add(random.nextInt(100));
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
         System.out.print("Время затраченое на добавление элемента в конец коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.addLast(random.nextInt(100));
-        }
+
+        linkedList.addLast(random.nextInt(100));
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
@@ -51,37 +58,41 @@ public class Main {
 
         System.out.print("Время затраченое на получение элемента из коллекции ArrayList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list.get(i);
-        }
+
+        arrayList.get(0);
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
         System.out.print("Время затраченое на получение элемента из коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.get(i);
-        }
+
+        linkedList.get(0);
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
         System.out.print("Время затраченое на получение элемента из начала коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.getFirst();
-        }
+
+        linkedList.getFirst();
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
         System.out.print("Время затраченое на получение элемента из конца коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.getLast();
-        }
+
+        linkedList.getLast();
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
@@ -89,47 +100,49 @@ public class Main {
 
         System.out.print("Время затраченое на удаление элемента из коллекции ArrayList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list.remove(i);
-        }
+
+        arrayList.remove(0);
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
         System.out.print("Время затраченое на удаление элемента из коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.remove(i);
-        }
+
+        linkedList.remove(0);
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
-
-        for (int i = 0; i < capacity; i++) {
-            list2.addFirst(random.nextInt(100));
-        }
 
         System.out.print("Время затраченое на удаление элемента из начала коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.removeFirst();
-        }
+
+        linkedList.removeFirst();
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
 
-        for (int i = 0; i < capacity; i++) {
-            list2.addFirst(random.nextInt(100));
-        }
-
         System.out.print("Время затраченое на удаление элемента из конца коллекции LinkedList: ");
         beforeCycle = new Date();
-        for (int i = 0; i < capacity; i++) {
-            list2.removeLast();
-        }
+
+        linkedList.removeLast();
+
         afterCycle = new Date();
+
         elapsedTime = afterCycle.getTime() - beforeCycle.getTime();
         System.out.println(elapsedTime);
     }
 
+    public static void fillList(List list, int capacity) {
+        Random random = new Random();
+        for (int i = 0; i < capacity; i++) {
+            list.add(random.nextInt(100));
+        }
+    }
 }
